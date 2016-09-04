@@ -26,15 +26,15 @@ namespace WebApplication
             );
 
             routes.MapRoute(
-                "SpecialRoute", "Special/{action}/{id}/{*catchall}",
-                new { controller = "Product", action = "OutputToJson", id = @"\d+" },
-                new[] { "MyCom.Team1" }
+                "SpecialRoute", "{controller}/{action}",
+                new { controller = "Product", action = "OutputToJson"},
+                new[] { "Routing" }
                 );
 
             routes.MapRoute(
                 "GeneralRoute", "Product/{action}/{id: int}",
-                 new { controller = "Product", action = "Index" },
-                 new[] { "MyCom.Team2" }
+                 new { controller = "Product", action = "Index", id = "^8.*" }
+                 //new[] { "MyCom.Team2" }
               );
         }
 
