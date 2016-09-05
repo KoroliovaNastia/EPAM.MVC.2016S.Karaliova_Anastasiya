@@ -4,22 +4,33 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using WebProject.Models;
 
 namespace WebProject.Controllers
 {
     public class CustomerController : Controller
     {
+        private UserService service = new UserService();
+
         [HttpPost]
         [ActionName("Add-User")]
         public async Task<ActionResult> Add()
         {
-
-            return RedirectToAction("User-List");
+            User user = new User
+            {
+                
+                    Id =3,
+                    FirstName = "Anna",
+                    LastName = "Rich",
+                    Gender = Gender.Famale
+               
+            };
+            return RedirectToAction("User-List", await service.AddUserAsync(user));
         }
 
         [HttpGet]
         [ActionName("User-List")]
-        public ActionResult List()
+        public ActionResult List(List<User> users)
         {
             return View();
         }
