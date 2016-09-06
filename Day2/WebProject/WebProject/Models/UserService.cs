@@ -22,8 +22,8 @@ namespace WebProject.Models
             {
                 if (!context.Users.Contains(user))
                 {
-                    await Task.Delay(2000);
-                    context.Users.Add(user);
+                    await Task.Run(() => context.Users.Add(user));
+                    //context.Users.Add(user);
                 }
             }
         }

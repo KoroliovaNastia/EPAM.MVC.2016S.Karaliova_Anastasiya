@@ -25,14 +25,18 @@ namespace WebProject.Controllers
                     Gender = Gender.Famale
                
             };
-            return RedirectToAction("User-List", await service.AddUserAsync(user));
+
+            await Task.Run(() => service.AddUserAsync(user));
+
+            return RedirectToAction("User-List", service.GetUser());
         }
 
         [HttpGet]
         [ActionName("User-List")]
         public ActionResult List(List<User> users)
         {
-            return View();
+
+            return View("User-List", users);
         }
 
         [HttpPost]
