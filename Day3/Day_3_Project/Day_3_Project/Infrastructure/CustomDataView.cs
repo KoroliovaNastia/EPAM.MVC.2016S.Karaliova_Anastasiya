@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.IO;
+
+namespace Day_3_Project.Infrastructure
+{
+    public class CustomDataView: IView
+    {
+        public void Render(ViewContext viewContext, TextWriter writer) {
+        Write(writer, "---Routing Data---");
+            foreach (string key in viewContext.RouteData.Values.Keys)
+            {
+                Write(writer, "Key: {0}, Value: {1}", key, viewContext.RouteData.Values[key]);
+            }
+            Write(writer, "---View Data---");
+            foreach (string key in viewContext.RouteData.Values.Keys)
+            {
+                Write(writer, "Key: {0}, Value: {1}", key, viewContext.RouteData.Values[key]);
+            }
+        }
+
+        private void Write(TextWriter writer, string template, params object[] values)
+        {
+            writer.Write(string.Format(template, values) + "<p/>");
+        }
+    }
+}
