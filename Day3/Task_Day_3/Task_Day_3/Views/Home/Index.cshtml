@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div>
+<div class="side light">
     <h4>Person</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -31,7 +31,7 @@
 @section Footer{
 
 @*@Html.Action("Footer", "Home", Model);*@
-<input type="button"  value="Join side" onclick="location.href='@Url.Action("JoinSide", "Home", new { person = Model })'" />
+<input type="button"  value="Join side" onclick="location.href='@Url.Action("JoinSide", "Home", new { personId = Model.Id })'" />
     }
 @section Header{
 

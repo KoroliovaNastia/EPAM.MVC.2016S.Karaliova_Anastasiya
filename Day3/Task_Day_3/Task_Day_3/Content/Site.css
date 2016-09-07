@@ -16,9 +16,9 @@ textarea {
     max-width: 280px;
 }
 
-.side {
+/*.side {
     
-}
+}*/
 
 .side.dark{
 
@@ -26,7 +26,15 @@ textarea {
 
 }
 
-    .side.light {
+.side.light {
 
         background-color:white;
-    }
+}
+
+.logoSide {
+
+    width: 80px;
+    height: 80px;
+    float: left;
+    background: url(css/lightside.jpg)
+}

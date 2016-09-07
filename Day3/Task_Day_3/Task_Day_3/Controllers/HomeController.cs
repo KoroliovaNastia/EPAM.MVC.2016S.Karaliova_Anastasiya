@@ -11,27 +11,20 @@ namespace Task_Day_3.Controllers
     {
         private Repository repository = new Repository();
         // GET: Home
-        [HttpGet]
-        public ActionResult Index()
+        //[HttpGet]
+        //public ActionResult Index()
+        //{
+
+        //    return View(repository.GetPersonById(0));
+        //}
+
+        //[HttpPost]
+
+        public ActionResult Index(Person person)
         {
-            Person unit = new Person
-            {
-                Id = 0,
-                PersonName = "Luke",
-                PersonClass = "Jedi",
-                Side = Side.Light
-            };
-            repository.AddPerson(unit);
-
-            return View(repository.GetPersonById(0));
-        }
-
-        [HttpPost]
-
-        public ActionResult Index(Person unit)
-        {
-           
-            return View(unit);
+            if (person.Id == null)
+                return View(repository.GetPersonById(0));
+            return View(person);
         }
 
 
@@ -47,21 +40,22 @@ namespace Task_Day_3.Controllers
         //}
 
         //[HttpGet]
-        public ActionResult JoinSide(Person person)
+        public ActionResult JoinSide(int? personId)
         {
+            Person person = repository.GetPersonById(personId);
             if (person.Side == Side.Light)
             {
-                person.Side = Side.Dark;
+                repository.ChangeSide((int)personId);
             }
             else {
-                RedirectToAction("Lol");
+                RedirectToAction("Lol", person);
             }
              return RedirectToAction("Index", person); 
          }
 
-        public ActionResult Lol()
+        public ActionResult Lol(Person person)
         {
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }

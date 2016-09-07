@@ -7,11 +7,19 @@ namespace Task_Day_3.Models
 {
     public class Repository
     {
-        private IList<Person> persons;
+        private static IList<Person> persons;
 
         public Repository()
         {
             persons = new List<Person>();
+            Person unit = new Person
+            {
+                Id = 0,
+                PersonName = "Luke",
+                PersonClass = "Jedi",
+                Side = Side.Light
+            };
+            persons.Add(unit);
         }
 
         public IList<Person> GetAll()
@@ -19,7 +27,7 @@ namespace Task_Day_3.Models
             return persons;
         }
 
-        public Person GetPersonById(int id)
+        public Person GetPersonById(int? id)
         {
             return persons.FirstOrDefault(u => u.Id == id);
         }
@@ -28,6 +36,12 @@ namespace Task_Day_3.Models
         {
             if(!persons.Contains(person))
             persons.Add(person);
+        }
+
+        public void ChangeSide(int personId)
+        {
+            if(persons[personId].Side == Side.Light)
+                persons[personId].Side = Side.Dark;
         }
     }
 }

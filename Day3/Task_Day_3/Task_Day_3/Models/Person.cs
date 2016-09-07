@@ -7,7 +7,7 @@ namespace Task_Day_3.Models
 {
     public class Person
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string PersonName { get; set; }
         public string PersonClass { get; set; }
         public Side Side { get; set; }
