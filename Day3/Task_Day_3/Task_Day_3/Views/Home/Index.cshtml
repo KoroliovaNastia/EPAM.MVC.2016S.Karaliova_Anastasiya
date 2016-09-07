@@ -29,8 +29,12 @@
     </dl>
 </div>
 @section Footer{
-@Html.Action("Footer", "Home", Model);
+
+@*@Html.Action("Footer", "Home", Model);*@
+<input type="button"  value="Join side" onclick="location.href='@Url.Action("JoinSide", "Home", new { person = Model })'" />
     }
-@*@section Header{
-    @Html.Partial("HeaderView", Model);
-    }*@
+@section Header{
+
+    @Html.Partial("HeaderView");
+
+    }

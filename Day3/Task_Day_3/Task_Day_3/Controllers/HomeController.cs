@@ -11,6 +11,7 @@ namespace Task_Day_3.Controllers
     {
         private Repository repository = new Repository();
         // GET: Home
+        [HttpGet]
         public ActionResult Index()
         {
             Person unit = new Person
@@ -25,21 +26,28 @@ namespace Task_Day_3.Controllers
             return View(repository.GetPersonById(0));
         }
 
+        [HttpPost]
+
+        public ActionResult Index(Person unit)
+        {
+           
+            return View(unit);
+        }
+
+
         public ActionResult Footer()
         {
             return View();
         }
 
-         [HttpGet] 
-         public ActionResult JoinSide()
-         { 
-            return View(); 
-         } 
- 
- 
-         [HttpPost] 
-         [ValidateAntiForgeryToken] 
-         public ActionResult JoinSide(Person person)
+        //[HttpGet]
+        //public ActionResult JoinSide()
+        //{
+        //    return RedirectToAction("Index");
+        //}
+
+        //[HttpGet]
+        public ActionResult JoinSide(Person person)
         {
             if (person.Side == Side.Light)
             {
@@ -48,7 +56,7 @@ namespace Task_Day_3.Controllers
             else {
                 RedirectToAction("Lol");
             }
-             return RedirectToAction("Index"); 
+             return RedirectToAction("Index", person); 
          }
 
         public ActionResult Lol()
