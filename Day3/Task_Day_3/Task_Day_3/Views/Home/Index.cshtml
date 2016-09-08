@@ -6,8 +6,9 @@
 }
 
 <div class="side.light">
-    <h4>Person</h4>
-    <hr />
+
+
+    <hr/>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.PersonName)
@@ -27,11 +28,15 @@
 
 
     </dl>
-    <input type="text" value=@Model.Side.ToString() name="Side" id="valueSide" hidden />
+    <input type="text" value=@Model.Side.ToString() name="Side" id="valueSide" hidden/>
 </div>
 @section Footer{
 
-<input type="button" value="Join side" onclick="location.href='@Url.Action("JoinSide", "Home", new { personId = Model.Id })'" id="btnChangeSide" />
+    @*<input type="button" value="Join side" onclick="location.href='@Url.Action("JoinSide", "Home", new { personId = Model.Id })'" id="btnChangeSide" />*@
+@using (Html.BeginForm("JoinSide", "Home", new { personId = Model.Id }))
+{
+    <input type="submit" value="Join side" name="value" class="btn btn-default" id="btnChangeSide" />
+}
 }
 
 @section Header{

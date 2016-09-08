@@ -1,6 +1,8 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background: url(css/swtor_dual_screen_by_krisssssssssss-d4vre3w.jpg) no-repeat;
+    background-color: black;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -30,7 +32,7 @@ textarea {
 
 .light {
 
-    background-color:blanchedalmond;
+    background-color:lightblue;
     font-style: italic;
     font-size: 20px;
     color: black;
@@ -55,4 +57,8 @@ textarea {
     background: url(css/darkside.jpg);
 
 }
+#p {
 
+    display: inline-block;
+    margin-left: 30px;
+}

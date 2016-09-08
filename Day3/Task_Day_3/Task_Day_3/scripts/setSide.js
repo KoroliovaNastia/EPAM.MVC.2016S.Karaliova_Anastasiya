@@ -7,11 +7,12 @@
 
         $(".container").addClass("light");
         $(".logoSide").addClass("light");
-
+        $(".container").fadeTo(1000, 0.7);
 
     } else {
         $(".container").removeClass("light");
         $(".container").addClass("dark");
+        $(".container").fadeTo(1000, 0.7);
         $(".logoSide").removeClass("light");
         $(".logoSide").addClass("dark");
         $("#btnChangeSide").click(function () {
