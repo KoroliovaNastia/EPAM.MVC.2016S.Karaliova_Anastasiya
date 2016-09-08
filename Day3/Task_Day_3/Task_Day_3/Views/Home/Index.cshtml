@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="side light">
+<div class="side.light">
     <h4>Person</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -27,14 +27,15 @@
 
 
     </dl>
+    <input type="text" value=@Model.Side.ToString() name="Side" id="valueSide" hidden />
 </div>
 @section Footer{
 
-@*@Html.Action("Footer", "Home", Model);*@
-<input type="button"  value="Join side" onclick="location.href='@Url.Action("JoinSide", "Home", new { personId = Model.Id })'" />
-    }
+<input type="button" value="Join side" onclick="location.href='@Url.Action("JoinSide", "Home", new { personId = Model.Id })'" id="btnChangeSide" />
+}
+
 @section Header{
 
-    @Html.Partial("HeaderView");
+    @Html.Partial("HeaderView")
 
     }

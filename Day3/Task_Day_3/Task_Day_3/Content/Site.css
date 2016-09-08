@@ -20,15 +20,20 @@ textarea {
     
 }*/
 
-.side.dark{
+.dark{
 
     background-color:black;
-
+    font-style: italic;
+    font-size: 20px;
+    color: red;
 }
 
-.side.light {
+.light {
 
-        background-color:white;
+    background-color:blanchedalmond;
+    font-style: italic;
+    font-size: 20px;
+    color: black;
 }
 
 .logoSide {
@@ -36,5 +41,18 @@ textarea {
     width: 80px;
     height: 80px;
     float: left;
-    background: url(css/lightside.jpg)
+    /*background: url(css/lightside.jpg)*/
 }
+
+.logoSide.light {
+
+    background: url(css/lightside.jpg);
+
+}
+
+.logoSide.dark {
+    
+    background: url(css/darkside.jpg);
+
+}
+
