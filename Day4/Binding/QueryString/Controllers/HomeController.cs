@@ -15,22 +15,23 @@ namespace QueryString.Controllers
             return View();
         }
 
+        //Наврядли верно выполненная часть
         [HttpPost]
         public ActionResult Index(CultureInfo culture)
         {
             string firstName = Request.QueryString["FirstName"];
             string lastName = Request.QueryString["LastName"];
             //CultureInfo enUS = new CultureInfo("en-US");
-            DateTime dateOfBirth; 
+            DateTime dateOfBirth;
             DateTime.TryParseExact(Request.QueryString["BirthDate"], "g", culture,
                                  DateTimeStyles.None, out dateOfBirth);
             Role role = Role.Admin;
             string roleStr = Request.QueryString["Role"];
             if (roleStr == null)
                 roleStr = "<not-defined>";
-            if(roleStr == "<not-defined>")
+            if (roleStr == "<not-defined>")
                 role = Role.Guest;
-            if(!Request.IsLocal)
+            if (!Request.IsLocal)
                 role = Role.User;
 
             string line1 = Request.QueryString["Line1"];
@@ -67,5 +68,17 @@ namespace QueryString.Controllers
             };
             return View(person);
         }
+        //Скорее всего именно нижний индекс тот, который необходим по заданию
+    //    [HttpGet]
+    //    [ActionName("Index")]
+    //    public ActionResult IndexCreate()
+    //    {
+    //        Person person = new Person();
+    //        if (TryUpdateModel(person, new QueryStringValueProvider(this.ControllerContext)))
+    //        {
+    //            return View("Index", person);
+    //        }
+    //        return View("Index");
+    //    }
     }
 }
