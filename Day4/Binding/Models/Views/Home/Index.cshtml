@@ -1,0 +1,74 @@
+﻿@model IList<Models.Models.Person>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml"; ;
+}
+
+@*<div class="container" >
+    
+    <div class="row"><h4>Person</h4></div>
+    <div class="row"><label>ID:</label> @Html.DisplayFor(m => m.PersonId)</div>
+    <div class="row"><label>First Name:</label> @Html.DisplayFor(m => m.FirstName)</div>
+    <div class="row"><label>Last Name:</label> @Html.DisplayFor(m => m.LastName)</div>
+    <div class="row"><label>Role:</label> @Html.DisplayFor(m => m.Role)</div>
+
+</div>*@
+
+@if (!Model.Any())
+{
+    using (Html.BeginForm())
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            <fieldset>
+                <legend>Person @(i + 1)</legend>
+                <div>
+                    <label>First Name:</label>@Html.Editor("[" + i + "].FirstName")
+                </div>
+                <div>
+                    <label>Last Name:</label>@Html.Editor("[" + i + "].LastName")
+                </div>
+                <div>
+                    <label>Role:</label>@Html.Editor("[" + i + "].Role")
+                </div>
+                <div>
+                    <label>Date of Birth:</label>@Html.Editor("[" + i + "].BirthDate")
+                </div>
+                <div>
+                    <label>Line1:</label>@Html.Editor("[" + i + "].HomeAddress.Line1")
+                </div>
+                <div>
+                    <label>Line2:</label>@Html.Editor("[" + i + "].HomeAddress.Line2")
+                </div>
+                <div>
+                    <label>Postal Code:</label>@Html.Editor("[" + i + "].HomeAddress.PostalCode")
+                </div>
+                <div>
+                    <label>City:</label>@Html.Editor("[" + i + "].HomeAddress.City")
+                </div>
+                <div>
+                    <label>Country:</label>@Html.Editor("[" + i + "].HomeAddress.Country")
+                </div>
+                
+            </fieldset>
+        }
+        <button type="submit">Submit</button>
+    }
+}
+else
+{
+    foreach (var item in Model)
+    {
+        <p>@item.FirstName</p>
+        <p>@item.LastName</p>
+        <p>@item.Role</p>
+        <p>@item.BirthDate</p>
+        <p>@item.HomeAddress.Line2</p>
+        @*<p>@item.HomeAddress.PostalCode, @item.HomeAddress.Line1</p>
+        <p>@item.HomeAddress.City</p>
+        <p>@item.HomeAddress.Country</p>*@
+        <p>@item.HomeAddress.AddressSummary</p>
+    }
+    Html.ActionLink("Back", "Index");
+}

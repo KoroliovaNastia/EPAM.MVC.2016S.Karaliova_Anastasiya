@@ -1,0 +1,34 @@
+﻿@model Models.Models.Address
+
+@{
+    ViewBag.Title = "DisplaySummary";
+}
+
+<h2>DisplaySummary</h2>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+        <th></th>
+    </tr>
+
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => Model.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Country)
+        </td>
+       
+    </tr>
+
+
+</table>
