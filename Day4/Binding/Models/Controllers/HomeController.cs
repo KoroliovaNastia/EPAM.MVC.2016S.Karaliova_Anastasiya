@@ -25,14 +25,14 @@ namespace Models.Controllers
         }
         public ActionResult CreatePerson()
         {
-            return View(new PersonRepo());
+            return View(new Person());
         }
 
-        [HttpPost]
-        public ActionResult CreatePerson(PersonRepo model)
-        {
-            return View("Index", model);
-        }
+        //[HttpPost]
+        //public ActionResult CreatePerson(Person model)
+        //{
+        //    return View("Index", model);
+        //}
 
         public ActionResult DisplaySummary([Bind(Prefix = "HomeAddress")]Address summary)
         {

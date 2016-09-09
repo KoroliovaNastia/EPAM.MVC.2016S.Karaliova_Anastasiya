@@ -17,27 +17,11 @@ namespace Models.Infrastructure
             DateTime dateValue;
             model.FirstName = GetValue(bindingContext, "FirstName");
             model.LastName = GetValue(bindingContext, "LastName");
-            var role = GetValue(bindingContext, "Role");
-            model.Role = Role.Admin;
-            if (role == "<not-defined>")
-            {
-                model.Role = Role.Guest;
-            }
-            else if (role == "User")
-            {
-                model.Role = Role.User;
-            }
-           
+            model.Role = GetRole(modelBindingExecutionContext, GetValue(bindingContext, "Role"));
             DateTime.TryParseExact(GetValue(bindingContext, "BirthDate"), "g", enUS,
                                  DateTimeStyles.None, out dateValue);
 
             model.BirthDate = dateValue;
-            //model.BirthDate = DateTime.Parse(GetValue(bindingContext, "BirthDate")) ?? DateTime.;
-            //model.HomeAddress.Line1 = GetValue(bindingContext, "Line1");
-            //model.HomeAddress.Line2 = GetValue(bindingContext, "Line2");
-            //model.HomeAddress.PostalCode = GetValue(bindingContext, "PostalCode");
-            //model.HomeAddress.City = GetValue(bindingContext, "City");
-            //model.HomeAddress.Country = GetValue(bindingContext, "Country");
             model.HomeAddress.Line1 = GetValue(bindingContext, "Line1");
             model.HomeAddress.Line2 = GetValue(bindingContext, "Line2");
             model.HomeAddress.PostalCode = GetValue(bindingContext, "PostalCode");
@@ -74,7 +58,21 @@ namespace Models.Infrastructure
         {
             if (address.PostalCode == "<not-defined>" || address.City == "<not-defined>" || address.Line1 == "<not-defined>")
                 return "No personal address";
-            return address.PostalCode + address.City + ", " + address.Line1;
+            return "(Postal Code City, Address Line1) "+ address.PostalCode + address.City + ", " + address.Line1;
+        }
+
+        private Role GetRole(ControllerContext context, string role)
+        {
+            Role modelRole = Role.Admin;
+            if (role == "<not-defined>")
+            {
+                modelRole = Role.Guest;
+            }
+            else if (!context.RequestContext.HttpContext.Request.IsLocal)
+            {
+                modelRole = Role.User;
+            }
+            return modelRole;
         }
     }
 }

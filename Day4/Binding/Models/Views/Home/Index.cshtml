@@ -5,16 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml"; ;
 }
 
-@*<div class="container" >
-    
-    <div class="row"><h4>Person</h4></div>
-    <div class="row"><label>ID:</label> @Html.DisplayFor(m => m.PersonId)</div>
-    <div class="row"><label>First Name:</label> @Html.DisplayFor(m => m.FirstName)</div>
-    <div class="row"><label>Last Name:</label> @Html.DisplayFor(m => m.LastName)</div>
-    <div class="row"><label>Role:</label> @Html.DisplayFor(m => m.Role)</div>
-
-</div>*@
-
 @if (!Model.Any())
 {
     using (Html.BeginForm())
@@ -24,31 +14,31 @@
             <fieldset>
                 <legend>Person @(i + 1)</legend>
                 <div>
-                    <label>First Name:</label>@Html.Editor("[" + i + "].FirstName")
+                    <label>First Name:   </label>@Html.TextBox("[" + i + "].FirstName")
                 </div>
                 <div>
-                    <label>Last Name:</label>@Html.Editor("[" + i + "].LastName")
+                    <label>Last Name:    </label>@Html.TextBox("[" + i + "].LastName")
                 </div>
                 <div>
-                    <label>Role:</label>@Html.Editor("[" + i + "].Role")
+                    <label>Role:         </label>@Html.TextBox("[" + i + "].Role")
                 </div>
                 <div>
-                    <label>Date of Birth:</label>@Html.Editor("[" + i + "].BirthDate")
+                    <label>Date of Birth:</label>@Html.TextBox("[" + i + "].BirthDate")
                 </div>
                 <div>
-                    <label>Line1:</label>@Html.Editor("[" + i + "].HomeAddress.Line1")
+                    <label>Line1:        </label>@Html.TextBox("[" + i + "].HomeAddress.Line1")
                 </div>
                 <div>
-                    <label>Line2:</label>@Html.Editor("[" + i + "].HomeAddress.Line2")
+                    <label>Line2:        </label>@Html.TextBox("[" + i + "].HomeAddress.Line2")
                 </div>
                 <div>
-                    <label>Postal Code:</label>@Html.Editor("[" + i + "].HomeAddress.PostalCode")
+                    <label>Postal Code:  </label>@Html.TextBox("[" + i + "].HomeAddress.PostalCode")
                 </div>
                 <div>
-                    <label>City:</label>@Html.Editor("[" + i + "].HomeAddress.City")
+                    <label>City:         </label>@Html.TextBox("[" + i + "].HomeAddress.City")
                 </div>
                 <div>
-                    <label>Country:</label>@Html.Editor("[" + i + "].HomeAddress.Country")
+                    <label>Country:      </label>@Html.TextBox("[" + i + "].HomeAddress.Country")
                 </div>
                 
             </fieldset>
@@ -60,15 +50,15 @@ else
 {
     foreach (var item in Model)
     {
-        <p>@item.FirstName</p>
-        <p>@item.LastName</p>
-        <p>@item.Role</p>
-        <p>@item.BirthDate</p>
-        <p>@item.HomeAddress.Line2</p>
-        @*<p>@item.HomeAddress.PostalCode, @item.HomeAddress.Line1</p>
-        <p>@item.HomeAddress.City</p>
-        <p>@item.HomeAddress.Country</p>*@
-        <p>@item.HomeAddress.AddressSummary</p>
+        <h4>Person</h4>
+        <fieldset>
+            <p>First Name : @item.FirstName</p>
+            <p>Last Name : @item.LastName</p>
+            <p>Role : @item.Role</p>
+            <p>Date of Birth: @item.BirthDate</p>
+            <p>Address Line2 : @item.HomeAddress.Line2</p>
+            <p>AddressSummary : @item.HomeAddress.AddressSummary</p>
+        </fieldset>
     }
     Html.ActionLink("Back", "Index");
 }
